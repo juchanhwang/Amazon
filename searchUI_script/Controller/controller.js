@@ -53,8 +53,12 @@ export default class Controller {
     }
 
     else if (e.code === 'ArrowUp' && this.idx === this.minIdx) {
-      suggestionVal[this.minIdx].style.background = `transparent`;
+      keywordNodeLs[this.idx] ? suggestionVal[this.minIdx].style.background = `transparent` : null;
       this.idx = this.removeHover;
     }
+    let keyword = this.optionObj.search.value.split(' ').join('+');
+    let searchUrl = `s?k=${keyword}`;
+    document.getElementById('searchbar_form').base = 'https://www.amazon.com';
+    document.getElementById('searchbar_form').action = searchUrl;
   }
 }
